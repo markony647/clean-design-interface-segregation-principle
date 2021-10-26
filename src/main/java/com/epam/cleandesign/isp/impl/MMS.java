@@ -10,19 +10,15 @@ import java.util.Objects;
 
 public class MMS extends AbstractMessage implements MessageAttachment {
 
-    private final MessageType type = MessageType.MMS;
     private List<Attachment> attachments = new ArrayList();
 
     public MMS() {
+        setType(MessageType.MMS);
     }
 
     public MMS(String firstRecipient) {
+        setType(MessageType.MMS);
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -46,12 +42,12 @@ public class MMS extends AbstractMessage implements MessageAttachment {
             return false;
         }
         MMS mms = (MMS) o;
-        return type == mms.type &&
+        return getType() == mms.getType() &&
                 Objects.equals(attachments, mms.attachments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, attachments);
+        return Objects.hash(super.hashCode(), getType(), attachments);
     }
 }

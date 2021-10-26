@@ -7,21 +7,17 @@ import java.util.Objects;
 
 public class Fax extends AbstractMessage implements FaxMessage {
 
-    private final MessageType type = MessageType.FAX;
     private String companyName;
     private String callbackFax;
     private String subject;
 
     public Fax() {
+        setType(MessageType.FAX);
     }
 
     public Fax(String firstRecipient) {
+        setType(MessageType.FAX);
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -58,7 +54,7 @@ public class Fax extends AbstractMessage implements FaxMessage {
             return false;
         }
         Fax that = (Fax) o;
-        return type == that.type &&
+        return getType() == that.getType() &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(callbackFax, that.callbackFax) &&
                 Objects.equals(subject, that.subject);
@@ -66,7 +62,7 @@ public class Fax extends AbstractMessage implements FaxMessage {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, companyName, callbackFax, subject);
+        return Objects.hash(super.hashCode(), getType(), companyName, callbackFax, subject);
     }
 
     @Override

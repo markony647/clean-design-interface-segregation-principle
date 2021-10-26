@@ -9,18 +9,13 @@ import java.util.Objects;
 
 public class SMS extends AbstractMessage implements Message {
 
-    private final MessageType type = MessageType.SMS;
-
     public SMS() {
+        setType(MessageType.SMS);
     }
 
     public SMS(String firstRecipient) {
+        setType(MessageType.SMS);
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -35,11 +30,11 @@ public class SMS extends AbstractMessage implements Message {
             return false;
         }
         SMS sms = (SMS) o;
-        return type == sms.type;
+        return getType() == sms.getType();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type);
+        return Objects.hash(super.hashCode(), getType());
     }
 }

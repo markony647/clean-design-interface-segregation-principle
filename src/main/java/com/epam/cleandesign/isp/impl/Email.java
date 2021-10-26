@@ -10,22 +10,18 @@ import java.util.Objects;
 
 public class Email extends AbstractMessage implements EmailMessage {
 
-    private final MessageType type = MessageType.EMAIL;
     private String subject;
     private List<String> ccRecipients = new ArrayList();
     private List<String> bccRecipients = new ArrayList();
     private List<Attachment> attachments = new ArrayList();
 
     public Email() {
+        setType(MessageType.EMAIL);
     }
 
     public Email(String firstRecipient) {
+        setType(MessageType.EMAIL);
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -76,7 +72,7 @@ public class Email extends AbstractMessage implements EmailMessage {
             return false;
         }
         Email that = (Email) o;
-        return type == that.type &&
+        return getType() == that.getType() &&
                 Objects.equals(subject, that.subject) &&
                 Objects.equals(ccRecipients, that.ccRecipients) &&
                 Objects.equals(bccRecipients, that.bccRecipients) &&
@@ -85,6 +81,6 @@ public class Email extends AbstractMessage implements EmailMessage {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, subject, ccRecipients, bccRecipients, attachments);
+        return Objects.hash(super.hashCode(), getType(), subject, ccRecipients, bccRecipients, attachments);
     }
 }

@@ -11,19 +11,15 @@ import java.util.Objects;
 
 public class SkypeVideo extends AbstractMessage implements MessageAttachment {
 
-    private final MessageType type = MessageType.VIDEO;
     private List<Attachment> attachments = new ArrayList();
 
     public SkypeVideo() {
+        setType(MessageType.VIDEO);
     }
 
     public SkypeVideo(String firstRecipient) {
+        setType(MessageType.VIDEO);
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -47,12 +43,12 @@ public class SkypeVideo extends AbstractMessage implements MessageAttachment {
             return false;
         }
         SkypeVideo that = (SkypeVideo) o;
-        return type == that.type &&
+        return getType() == that.getType() &&
                 Objects.equals(attachments, that.attachments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, attachments);
+        return Objects.hash(super.hashCode(), getType(), attachments);
     }
 }
