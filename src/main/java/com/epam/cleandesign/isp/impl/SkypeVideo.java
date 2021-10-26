@@ -1,5 +1,7 @@
 package com.epam.cleandesign.isp.impl;
 
+import com.epam.cleandesign.isp.api.MessageAttachment;
+import com.epam.cleandesign.isp.api.MessageSubject;
 import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
@@ -7,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SkypeVideo extends AbstractMessage {
+public class SkypeVideo extends AbstractMessage implements MessageAttachment {
 
     private final MessageType type = MessageType.VIDEO;
     private List<Attachment> attachments = new ArrayList();
@@ -31,11 +33,6 @@ public class SkypeVideo extends AbstractMessage {
 
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
-    }
-
-    @Override
-    public String getSubject() {
-        throw new UnsupportedOperationException("Skype video can not contain a subject.");
     }
 
     @Override

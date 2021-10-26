@@ -1,10 +1,8 @@
 package com.epam.cleandesign.isp.impl;
 
 import com.epam.cleandesign.isp.api.FaxMessage;
-import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Fax extends AbstractMessage implements FaxMessage {
@@ -44,16 +42,6 @@ public class Fax extends AbstractMessage implements FaxMessage {
         this.callbackFax = callbackFax;
     }
 
-    @Override
-    public List<Attachment> getAttachments() {
-        throw new UnsupportedOperationException("Fax can not contain attachments.");
-    }
-
-    @Override
-    public String getSubject() {
-        return subject;
-    }
-
     public void setSubject(String subject) {
         this.subject = subject;
     }
@@ -79,5 +67,10 @@ public class Fax extends AbstractMessage implements FaxMessage {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), type, companyName, callbackFax, subject);
+    }
+
+    @Override
+    public String getSubject() {
+        return subject;
     }
 }

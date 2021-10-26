@@ -11,9 +11,9 @@ public interface Message {
 
     String getMessageBody();
 
-    String getSubject();
+//    String getSubject();
 
-    List<Attachment> getAttachments();
+//    List<Attachment> getAttachments();
 
     MessageType getType();
 }

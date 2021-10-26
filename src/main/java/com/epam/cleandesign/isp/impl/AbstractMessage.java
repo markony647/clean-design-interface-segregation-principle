@@ -1,6 +1,7 @@
 package com.epam.cleandesign.isp.impl;
 
 import com.epam.cleandesign.isp.api.Message;
+import com.epam.cleandesign.isp.api.MessageAttachment;
 
 import java.util.ArrayList;
 import java.util.List;

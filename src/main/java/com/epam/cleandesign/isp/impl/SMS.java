@@ -24,16 +24,6 @@ public class SMS extends AbstractMessage implements Message {
     }
 
     @Override
-    public String getSubject() {
-        throw new UnsupportedOperationException("SMS can not contain a subject.");
-    }
-
-    @Override
-    public List<Attachment> getAttachments() {
-        throw new UnsupportedOperationException("SMS can not containt attachments.");
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
