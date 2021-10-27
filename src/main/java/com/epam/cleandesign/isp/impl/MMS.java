@@ -1,6 +1,6 @@
 package com.epam.cleandesign.isp.impl;
 
-import com.epam.cleandesign.isp.api.MessageAttachment;
+import com.epam.cleandesign.isp.api.MessageWithAttachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MMS extends AbstractMessage implements MessageAttachment {
+public class MMS extends SMS implements MessageWithAttachment {
 
     private List<Attachment> attachments = new ArrayList();
 
@@ -17,7 +17,7 @@ public class MMS extends AbstractMessage implements MessageAttachment {
     }
 
     public MMS(String firstRecipient) {
-        setType(MessageType.MMS);
+        this();
         getRecipients().add(firstRecipient);
     }
 

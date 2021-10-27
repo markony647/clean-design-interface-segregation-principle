@@ -14,7 +14,7 @@ public class SMS extends AbstractMessage implements Message {
     }
 
     public SMS(String firstRecipient) {
-        setType(MessageType.SMS);
+        this();
         getRecipients().add(firstRecipient);
     }
 

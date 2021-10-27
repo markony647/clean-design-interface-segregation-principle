@@ -1,6 +1,6 @@
 package com.epam.cleandesign.isp.api;
 
-public interface MessageSubject {
+public interface MessageWithSubject {
 
     String getSubject();
 }

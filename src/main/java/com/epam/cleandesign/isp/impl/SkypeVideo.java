@@ -1,7 +1,6 @@
 package com.epam.cleandesign.isp.impl;
 
-import com.epam.cleandesign.isp.api.MessageAttachment;
-import com.epam.cleandesign.isp.api.MessageSubject;
+import com.epam.cleandesign.isp.api.MessageWithAttachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class SkypeVideo extends AbstractMessage implements MessageAttachment {
+public class SkypeVideo extends AbstractMessage implements MessageWithAttachment {
 
     private List<Attachment> attachments = new ArrayList();
 
@@ -18,7 +17,7 @@ public class SkypeVideo extends AbstractMessage implements MessageAttachment {
     }
 
     public SkypeVideo(String firstRecipient) {
-        setType(MessageType.VIDEO);
+        this();
         getRecipients().add(firstRecipient);
     }
 

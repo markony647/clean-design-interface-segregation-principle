@@ -20,7 +20,7 @@ public class Email extends AbstractMessage implements EmailMessage {
     }
 
     public Email(String firstRecipient) {
-        setType(MessageType.EMAIL);
+        this();
         getRecipients().add(firstRecipient);
     }
 

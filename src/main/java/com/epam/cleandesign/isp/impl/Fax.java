@@ -16,7 +16,7 @@ public class Fax extends AbstractMessage implements FaxMessage {
     }
 
     public Fax(String firstRecipient) {
-        setType(MessageType.FAX);
+        this();
         getRecipients().add(firstRecipient);
     }
 
