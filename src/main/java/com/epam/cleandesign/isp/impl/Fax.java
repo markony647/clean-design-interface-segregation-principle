@@ -1,29 +1,23 @@
 package com.epam.cleandesign.isp.impl;
 
 import com.epam.cleandesign.isp.api.FaxMessage;
-import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
-import java.util.List;
 import java.util.Objects;
 
 public class Fax extends AbstractMessage implements FaxMessage {
 
-    private final MessageType type = MessageType.FAX;
     private String companyName;
     private String callbackFax;
     private String subject;
 
     public Fax() {
+        setType(MessageType.FAX);
     }
 
     public Fax(String firstRecipient) {
+        this();
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -44,16 +38,6 @@ public class Fax extends AbstractMessage implements FaxMessage {
         this.callbackFax = callbackFax;
     }
 
-    @Override
-    public List<Attachment> getAttachments() {
-        throw new UnsupportedOperationException("Fax can not contain attachments.");
-    }
-
-    @Override
-    public String getSubject() {
-        return subject;
-    }
-
     public void setSubject(String subject) {
         this.subject = subject;
     }
@@ -70,7 +54,7 @@ public class Fax extends AbstractMessage implements FaxMessage {
             return false;
         }
         Fax that = (Fax) o;
-        return type == that.type &&
+        return getType() == that.getType() &&
                 Objects.equals(companyName, that.companyName) &&
                 Objects.equals(callbackFax, that.callbackFax) &&
                 Objects.equals(subject, that.subject);
@@ -78,6 +62,11 @@ public class Fax extends AbstractMessage implements FaxMessage {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, companyName, callbackFax, subject);
+        return Objects.hash(super.hashCode(), getType(), companyName, callbackFax, subject);
+    }
+
+    @Override
+    public String getSubject() {
+        return subject;
     }
 }

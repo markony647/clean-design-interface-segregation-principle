@@ -1,5 +1,6 @@
 package com.epam.cleandesign.isp.impl;
 
+import com.epam.cleandesign.isp.api.MessageWithAttachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.Attachment;
 import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
@@ -7,21 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MMS extends SMS {
+public class MMS extends SMS implements MessageWithAttachment {
 
-    private final MessageType type = MessageType.MMS;
     private List<Attachment> attachments = new ArrayList();
 
     public MMS() {
+        setType(MessageType.MMS);
     }
 
     public MMS(String firstRecipient) {
+        this();
         getRecipients().add(firstRecipient);
-    }
-
-    @Override
-    public MessageType getType() {
-        return type;
     }
 
     @Override
@@ -45,12 +42,12 @@ public class MMS extends SMS {
             return false;
         }
         MMS mms = (MMS) o;
-        return type == mms.type &&
+        return getType() == mms.getType() &&
                 Objects.equals(attachments, mms.attachments);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), type, attachments);
+        return Objects.hash(super.hashCode(), getType(), attachments);
     }
 }

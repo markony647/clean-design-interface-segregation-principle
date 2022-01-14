@@ -1,6 +1,7 @@
 package com.epam.cleandesign.isp.impl;
 
 import com.epam.cleandesign.isp.api.Message;
+import com.epam.cleandesign.isp.thirdpartyjars.common.MessageType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ public abstract class AbstractMessage implements Message {
 
     protected List<String> recipients = new ArrayList<>();
     protected String messageBody;
+    private MessageType type;
 
     @Override
     public List<String> getRecipients() {
@@ -21,8 +23,17 @@ public abstract class AbstractMessage implements Message {
     }
 
     @Override
+    public MessageType getType() {
+        return type;
+    }
+
+    @Override
     public String getMessageBody() {
         return messageBody;
+    }
+
+    public void setType(MessageType type) {
+        this.type = type;
     }
 
     public void setMessageBody(String messageBody) {
